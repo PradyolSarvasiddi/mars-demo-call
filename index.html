@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mars Demo Call</title>
+</head>
+
+<body>
+    <h1>Try Live Demo</h1>
+
+    <input id="name" placeholder="Your Name"><br><br>
+    <input id="phone" placeholder="Phone Number"><br><br>
+
+    <button onclick="call()">Submit</button>
+
+    <script>
+        async function call() {
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+
+            await fetch("/api/call", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, phone })
+            });
+
+            alert("Call incoming!");
+        }
+    </script>
+</body>
+
+</html>
